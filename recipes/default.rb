@@ -5,13 +5,13 @@ if node['chef_client']['handler']['graphite']['host'] && node['chef_client']['ha
     action :nothing
   end.run_action(:install)
 
-  cookbook_file "/var/cache/handlers/chef-handler-graphite.rb" do
+  cookbook_file "#{Chef::Config[:file_cache_path]}/chef-handler-graphite.rb" do
     source "chef-handler-graphite.rb"
     mode "0600"
   end
 
   chef_handler "GraphiteReporting" do
-    source "/var/cache/handlers/chef-handler-graphite.rb"
+    source "#{Chef::Config[:file_cache_path]}/chef-handler-graphite.rb"
     arguments [
                 :metric_key => node['chef_client']['handler']['graphite']['prefix'],
                 :graphite_host => node['chef_client']['handler']['graphite']['host'],
