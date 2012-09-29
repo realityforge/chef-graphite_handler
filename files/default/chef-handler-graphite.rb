@@ -39,6 +39,13 @@ class GraphiteReporting < Chef::Handler
     metrics[:all_resources] = run_status.all_resources.length
     metrics[:elapsed_time] = run_status.elapsed_time
 
+    # Graph metrics from the Ohai system-packages plugin (https://github.com/finnlabs/ohai-system_packages/)
+    if node.has_key? 'system_packages'
+      metrics[:installed_packages] = node.system_packages.installed.size
+      metrics[:upgradeable_packages] = node.system_packages.upgradeable.size
+      metrics[:holding_packages] = node.system_packages.holding.size
+    end
+
     if run_status.success?
       metrics[:success] = 1
       metrics[:fail] = 0

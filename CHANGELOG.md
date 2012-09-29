@@ -1,3 +1,7 @@
+## v0.0.6:
+
+* Enhance : Include ohai-system_packages plugin statistics if available.
+
 ## v0.0.5:
 
 * Bug     : Update to use chef_gem for compatibility with omnibus chef installs.
