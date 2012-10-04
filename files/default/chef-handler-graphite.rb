@@ -16,6 +16,7 @@
 # limitations under the License.
 #
 
+require "rubygems"
 require "simple-graphite"
 require "chef"
 require "chef/handler"
