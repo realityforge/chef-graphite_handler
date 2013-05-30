@@ -42,9 +42,9 @@ class GraphiteReporting < Chef::Handler
 
     # Graph metrics from the Ohai system-packages plugin (https://github.com/finnlabs/ohai-system_packages/)
     if node.has_key? 'system_packages'
-      metrics[:installed_packages] = node['system_packages']['installed'].size if node['system_packages']['installed']
-      metrics[:upgradeable_packages] = node['system_packages']['upgradeable'].size if node['system_packages']['upgradeable']
-      metrics[:holding_packages] = node['system_packages']['holding'].size if node['system_packages']['holding']
+      node['system_packages'].each do |k, v|
+        metrics["#{k}_packages"] = v.size if v and v.respond_to? :size
+      end
     end
 
     if run_status.success?
@@ -63,7 +63,7 @@ class GraphiteReporting < Chef::Handler
         end
       end
     rescue => e
-      Chef::Log.error("Error reporting to graphite")
+      Chef::Log.error("Error reporting to graphite: #{e}")
     end
   end
 end
