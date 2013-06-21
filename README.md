@@ -3,8 +3,8 @@ Description
 
 [![Build Status](https://secure.travis-ci.org/realityforge/chef-graphite_handler.png?branch=master)](http://travis-ci.org/realityforge/chef-graphite_handler)
 
-A cookbook that a handler that sends chef run results to graphite. If you have
-the [ohai-system_pacakges](https://github.com/finnlabs/ohai-system_packages/)
+A cookbook that includes a report handler for sending chef run results to graphite. If you have
+the [ohai-system_packages](https://github.com/finnlabs/ohai-system_packages/)
 plugin installed, it will also send package statistics to graphite.
 
 Requirements
@@ -24,7 +24,7 @@ This cookbook uses the following attributes to configure how it is installed.
 Usage
 =====
 
-Set the host and port properties on the node and include the "graphite_handler::default" recipe.
+Set the host and port attributes on the node and include the "graphite_handler::default" recipe.
 
 Credits
 =======
