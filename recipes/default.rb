@@ -30,6 +30,7 @@ if node['chef_client']['handler']['graphite']['host'] && node['chef_client']['ha
     source "#{Chef::Config[:file_cache_path]}/chef-handler-graphite.rb"
     arguments [
                 :metric_key => node['chef_client']['handler']['graphite']['prefix'],
+                :enable_profiling => node['chef_client']['handler']['graphite']['enable_profiling'],
                 :graphite_host => node['chef_client']['handler']['graphite']['host'],
                 :graphite_port => node['chef_client']['handler']['graphite']['port']
               ]
