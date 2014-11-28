@@ -17,3 +17,4 @@
 default['chef_client']['handler']['graphite']['host'] = nil
 default['chef_client']['handler']['graphite']['port'] = nil
 default['chef_client']['handler']['graphite']['prefix'] = "chef.#{node.chef_environment}.node.#{(node['hostname']||'').downcase}"
+default['chef_client']['handler']['graphite']['enable_profiling'] = true

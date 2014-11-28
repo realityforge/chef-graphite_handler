@@ -26,6 +26,7 @@ class GraphiteReporting < Chef::Handler
 
   def initialize(options = {})
     @metric_key = options[:metric_key]
+    @enable_profiling = options[:enable_profiling]
     @graphite_host = options[:graphite_host]
     @graphite_port = options[:graphite_port]
   end
@@ -53,6 +54,21 @@ class GraphiteReporting < Chef::Handler
     else
       metrics[:success] = 0
       metrics[:fail] = 1
+    end
+
+    if @enable_profiling
+      cookbooks = Hash.new(0)
+      recipes = Hash.new(0)
+      all_resources.each do |r|
+        cookbooks[r.cookbook_name] += r.elapsed_time
+        recipes["#{r.cookbook_name}::#{r.recipe_name}"] += r.elapsed_time
+      end
+      cookbooks.each do |cookbook, run_time|
+        metrics["_volatile.cookbook.#{cookbook}"] = run_time
+      end
+      recipes.each do |recipe, run_time|
+        metrics["_volatile.recipe.#{recipe}"] = run_time
+      end
     end
 
     begin
