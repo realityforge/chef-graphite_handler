@@ -18,3 +18,9 @@ default['chef_client']['handler']['graphite']['host'] = nil
 default['chef_client']['handler']['graphite']['port'] = nil
 default['chef_client']['handler']['graphite']['prefix'] = "chef.#{node.chef_environment}.node.#{(node['hostname']||'').downcase}"
 default['chef_client']['handler']['graphite']['enable_profiling'] = true
+
+#
+# If simple-graphite gem is available locally set this attribute e.g."/home/vagrant/gems/simple-graphite.gem"
+# If not the gem gets pulled from the ruby gems site 
+#
+default['chef_client']['handler']['gem']['location'] = nil
