@@ -17,7 +17,11 @@
 if node['chef_client']['handler']['graphite']['host'] && node['chef_client']['handler']['graphite']['port']
   include_recipe "chef_handler"
 
-  chef_gem "simple-graphite"
+  chef_gem "simple-graphite" do
+    if !node['chef_client']['handler']['gem']['location'].nil?
+      source node['chef_client']['handler']['gem']['location']
+    end
+  end
 
   cookbook_file "#{Chef::Config[:file_cache_path]}/chef-handler-graphite.rb" do
     source "chef-handler-graphite.rb"
