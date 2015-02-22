@@ -1,5 +1,7 @@
 ## v0.0.12:
 
+* Enhance : Allow custom metrics insertion. Submitted by Grégoire Seux
+
 ## v0.0.10:
 
 * Enhance : Do not specify unix permissions on a windows host.
