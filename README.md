@@ -26,6 +26,16 @@ Usage
 
 Set the host and port attributes on the node and include the "graphite_handler::default" recipe.
 
+Custom metrics
+==============
+
+To send custom metrics, fill a hash in `run_context[:graphite_handler_metrics]`.
+For instance, in a ruby_block:
+```
+run_context[:graphite_handler_metrics] ||= {}
+run_context[:graphite_handler_metrics][:monitoring_registration_time] = Benchmark.measure { register node }.real
+```
+
 Credits
 =======
 
