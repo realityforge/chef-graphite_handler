@@ -24,3 +24,4 @@ default['chef_client']['handler']['graphite']['enable_profiling'] = true
 # If not the gem gets pulled from the ruby gems site 
 #
 default['chef_client']['handler']['gem']['location'] = nil
+default['chef_client']['handler']['gem']['version'] = nil

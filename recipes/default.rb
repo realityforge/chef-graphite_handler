@@ -21,6 +21,9 @@ if node['chef_client']['handler']['graphite']['host'] && node['chef_client']['ha
     if !node['chef_client']['handler']['gem']['location'].nil?
       source node['chef_client']['handler']['gem']['location']
     end
+    if !node['chef_client']['handler']['gem']['version'].nil?
+      version node['chef_client']['handler']['gem']['version']
+    end
   end
 
   cookbook_file "#{Chef::Config[:file_cache_path]}/chef-handler-graphite.rb" do
