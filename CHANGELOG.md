@@ -1,6 +1,7 @@
 ## v0.0.12:
 
 * Enhance : Allow custom metrics insertion. Submitted by Grégoire Seux
+* Enhance : Allow the user to specify the gem version for graphite gem. Submitted by Olivier Bazoud.
 
 ## v0.0.10:
 
