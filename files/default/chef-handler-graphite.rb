@@ -57,7 +57,7 @@ class GraphiteReporting < Chef::Handler
     end
 
     # user provided metrics
-    user_metrics = run_status.run_context[:graphite_handler_metrics]
+    user_metrics = run_status.run_context.respond_to?(:[]) ? run_status.run_context[:graphite_handler_metrics] : {}
     metrics.merge!(user_metrics) if user_metrics.is_a?(Hash)
 
     if @enable_profiling
